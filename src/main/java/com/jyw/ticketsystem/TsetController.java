@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TsetController {
     @GetMapping("/hello")
     public String hello(){
-        return "傻逼idea222";
+        return "傻逼idea";
     }
 
 }
