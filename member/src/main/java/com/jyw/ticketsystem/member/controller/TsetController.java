@@ -1,4 +1,4 @@
-package com.jyw.ticketsystem;
+package com.jyw.ticketsystem.member.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TsetController {
     @GetMapping("/hello")
     public String hello(){
-        return "傻逼idea";
+        return "球球不要error！";
     }
 
 }
