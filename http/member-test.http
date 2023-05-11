@@ -1,0 +1,6 @@
+GET http://localhost:8008/member/hello
+Accept: application/json
+#java.net.SocketException: Network is unreachable: connect ？？？？？
+#呃怎么有人只写端口号不加本机地址啊跪。。。
+
+###
