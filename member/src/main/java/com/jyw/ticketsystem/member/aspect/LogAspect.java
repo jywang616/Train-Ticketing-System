@@ -25,12 +25,8 @@ public class LogAspect {
     public LogAspect() {
         System.out.println("Common LogAspect");
     }
-
     private final static Logger LOG = LoggerFactory.getLogger(LogAspect.class);
-
-    /**
-     * 定义一个切点
-     */
+    // 这里定义初点
     @Pointcut("execution(public * com.jyw..*Controller.*(..))")
     public void controllerPointcut() {
     }
@@ -38,21 +34,20 @@ public class LogAspect {
     @Before("controllerPointcut()")
     public void doBefore(JoinPoint joinPoint) {
 
-        // 开始打印请求日志
+        // 打印请求日志
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         Signature signature = joinPoint.getSignature();
         String name = signature.getName();
 
         // 打印请求信息
-        LOG.info("------------- 开始 -------------");
+        LOG.info("---------------- 开始 ----------------");
         LOG.info("请求地址: {} {}", request.getRequestURL().toString(), request.getMethod());
         LOG.info("类名方法: {}.{}", signature.getDeclaringTypeName(), name);
         LOG.info("远程地址: {}", request.getRemoteAddr());
 
         // 打印请求参数
         Object[] args = joinPoint.getArgs();
-        // LOG.info("请求参数: {}", JSONObject.toJSONString(args));
 
         // 排除特殊类型的参数，如文件类型
         Object[] arguments = new Object[args.length];
