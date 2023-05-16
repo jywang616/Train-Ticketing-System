@@ -6,6 +6,7 @@
     <modules>
         <module>member</module>
         <module>common</module>
+        <module>gate</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
