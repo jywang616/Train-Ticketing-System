@@ -1,4 +1,4 @@
-package com.jyw.ticketsystem.member.aspect;
+package com.jyw.trainsystem.common.aspect;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.support.spring.PropertyPreFilters;
@@ -25,8 +25,8 @@ public class LogAspect {
     public LogAspect() {
         System.out.println("Common LogAspect");
     }
+
     private final static Logger LOG = LoggerFactory.getLogger(LogAspect.class);
-    // 这里定义初点
     @Pointcut("execution(public * com.jyw..*Controller.*(..))")
     public void controllerPointcut() {
     }
@@ -41,7 +41,7 @@ public class LogAspect {
         String name = signature.getName();
 
         // 打印请求信息
-        LOG.info("---------------- 开始 ----------------");
+        LOG.info("------------- 开始 -------------");
         LOG.info("请求地址: {} {}", request.getRequestURL().toString(), request.getMethod());
         LOG.info("类名方法: {}.{}", signature.getDeclaringTypeName(), name);
         LOG.info("远程地址: {}", request.getRemoteAddr());
@@ -49,7 +49,7 @@ public class LogAspect {
         // 打印请求参数
         Object[] args = joinPoint.getArgs();
 
-        // 排除特殊类型的参数，如文件类型
+        // 排除特殊类型的参数，like文件类型
         Object[] arguments = new Object[args.length];
         for (int i = 0; i < args.length; i++) {
             if (args[i] instanceof ServletRequest
@@ -59,7 +59,7 @@ public class LogAspect {
             }
             arguments[i] = args[i];
         }
-        // 排除字段，敏感字段或太长的字段不显示：身份证、手机号、邮箱、密码等
+        // 敏感字段或太长的字段（如身份证、手机号、邮箱、密码等）不显示
         String[] excludeProperties = {};
         PropertyPreFilters filters = new PropertyPreFilters();
         PropertyPreFilters.MySimplePropertyPreFilter excludefilter = filters.addFilter();
@@ -71,7 +71,7 @@ public class LogAspect {
     public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
         Object result = proceedingJoinPoint.proceed();
-        // 排除字段，敏感字段或太长的字段不显示：身份证、手机号、邮箱、密码等
+        // 敏感字段或太长的字段（如身份证、手机号、邮箱、密码等）不显示
         String[] excludeProperties = {};
         PropertyPreFilters filters = new PropertyPreFilters();
         PropertyPreFilters.MySimplePropertyPreFilter excludefilter = filters.addFilter();
@@ -82,4 +82,3 @@ public class LogAspect {
     }
 
 }
-
