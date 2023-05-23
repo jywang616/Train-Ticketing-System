@@ -1,4 +1,4 @@
-package com.jyw.trainsystem.gate.config;
+package com.jyw.ticketsystem.gate.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
