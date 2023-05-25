@@ -20,6 +20,4 @@ public class MemberApplication {
         LOG.info("启动成功啦~");
         LOG.info("项目地址：\thttp://127.0.0.1:{}{}/hello",env.getProperty("server.port"),env.getProperty("server.servlet.context-path"));
     }
-
-
 }
