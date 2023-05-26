@@ -1,6 +1,8 @@
 package com.jyw.ticketsystem.member.service;
 
 import cn.hutool.core.collection.CollUtil;
+import com.jyw.ticketsystem.common.exception.BusinessException;
+import com.jyw.ticketsystem.common.exception.BusinessExceptionEnum;
 import com.jyw.ticketsystem.member.domain.Member;
 import com.jyw.ticketsystem.member.domain.MemberExample;
 import com.jyw.ticketsystem.member.mapper.MemberMapper;
@@ -28,10 +30,10 @@ public class MemberService {
         //带验证码的注册用这种方式；接口可以注册也可以登录qwq
         if(CollUtil.isNotEmpty(list)){
 //            return list.get(0).getId();
-            throw new RuntimeException("手机号已注册");
+            throw new BusinessException(BusinessExceptionEnum.MEMBER_MOBILE_EXIST);
         }
         Member member = new Member();
-        member.setId(System.currentTimeMillis());
+        member.setId(1L);
         member.setMobile(mobile);
         memberMapper.insert(member);
         return member.getId();

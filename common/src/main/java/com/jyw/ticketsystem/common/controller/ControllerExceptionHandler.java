@@ -1,6 +1,7 @@
 package com.jyw.ticketsystem.common.controller;
 
 
+import com.jyw.ticketsystem.common.exception.BusinessException;
 import com.jyw.ticketsystem.common.resp.CommonResp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,12 +25,22 @@ public class ControllerExceptionHandler {
     //针对exception不知道是什么异常
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public CommonResp exceptionHandler(Exception e) throws Exception {
+    public CommonResp exceptionHandler(Exception e) {
         CommonResp commonResp = new CommonResp();
         LOG.error("系统异常：", e);
         commonResp.setSuccess(false);
+        commonResp.setMessage("系统出现异常");
+        //commonResp.setMessage(e.getMessage());
+        return commonResp;
+    }
+    @ExceptionHandler(value = BusinessException.class)
+    @ResponseBody
+    public CommonResp exceptionHandler(BusinessException e) {
+        CommonResp commonResp = new CommonResp();
+        LOG.error("业务异常：", e);
+        commonResp.setSuccess(false);
         //commonResp.setMessage("系统出现异常");
-        commonResp.setMessage(e.getMessage());
+        commonResp.setMessage(e.getE().getDesc());
         return commonResp;
     }
 }
