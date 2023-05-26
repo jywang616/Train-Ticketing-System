@@ -4,6 +4,7 @@ import com.jyw.ticketsystem.member.req.MemberRegisterReq;
 import com.jyw.ticketsystem.member.service.MemberService;
 import com.jyw.ticketsystem.common.resp.CommonResp;
 import jakarta.annotation.Resource;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,7 @@ public class MemberController {
         return commonResp;
     }
     @PostMapping("/register")
-    public CommonResp<Long> register(MemberRegisterReq req){
+    public CommonResp<Long> register(@Valid MemberRegisterReq req){
         long register= memberService.register(req);
         /*CommonResp<Long> commonResp = new CommonResp<>();
         commonResp.setContent(register);
