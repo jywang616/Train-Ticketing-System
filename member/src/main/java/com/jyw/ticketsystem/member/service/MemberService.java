@@ -4,6 +4,7 @@ import cn.hutool.core.collection.CollUtil;
 import com.jyw.ticketsystem.member.domain.Member;
 import com.jyw.ticketsystem.member.domain.MemberExample;
 import com.jyw.ticketsystem.member.mapper.MemberMapper;
+import com.jyw.ticketsystem.member.req.MemberRegisterReq;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,8 @@ public class MemberService {
         return Math.toIntExact(memberMapper.countByExample(null));
     }
 
-    public long register(String mobile) {
+    public long register(MemberRegisterReq req) {
+        String mobile= req.getMobile();
         MemberExample memberExample = new MemberExample();
         //构造while条件
         memberExample.createCriteria().andMobileEqualTo(mobile);
