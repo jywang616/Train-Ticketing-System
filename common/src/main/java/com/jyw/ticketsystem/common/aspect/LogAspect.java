@@ -1,4 +1,4 @@
-package com.jyw.trainsystem.common.aspect;
+package com.jyw.ticketsystem.common.aspect;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.support.spring.PropertyPreFilters;

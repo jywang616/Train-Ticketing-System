@@ -2,7 +2,7 @@ package com.jyw.ticketsystem.member.controller;
 
 import com.jyw.ticketsystem.member.req.MemberRegisterReq;
 import com.jyw.ticketsystem.member.service.MemberService;
-import com.jyw.trainsystem.common.resp.CommonResp;
+import com.jyw.ticketsystem.common.resp.CommonResp;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

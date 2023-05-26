@@ -1,4 +1,4 @@
-package com.jyw.trainsystem.common.resp;
+package com.jyw.ticketsystem.common.resp;
 
 //用泛型放每个接口的数据
 public class CommonResp<T> {
