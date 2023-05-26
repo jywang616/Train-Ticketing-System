@@ -1,3 +1,4 @@
+
 package com.jyw.ticketsystem.member.service;
 
 import cn.hutool.core.collection.CollUtil;
@@ -33,7 +34,7 @@ public class MemberService {
             throw new BusinessException(BusinessExceptionEnum.MEMBER_MOBILE_EXIST);
         }
         Member member = new Member();
-        member.setId(1L);
+        member.setId(System.currentTimeMillis());
         member.setMobile(mobile);
         memberMapper.insert(member);
         return member.getId();
