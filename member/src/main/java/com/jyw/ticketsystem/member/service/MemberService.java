@@ -4,6 +4,7 @@ package com.jyw.ticketsystem.member.service;
 import cn.hutool.core.collection.CollUtil;
 import com.jyw.ticketsystem.common.exception.BusinessException;
 import com.jyw.ticketsystem.common.exception.BusinessExceptionEnum;
+import com.jyw.ticketsystem.common.util.SnowUtil;
 import com.jyw.ticketsystem.member.domain.Member;
 import com.jyw.ticketsystem.member.domain.MemberExample;
 import com.jyw.ticketsystem.member.mapper.MemberMapper;
@@ -34,7 +35,7 @@ public class MemberService {
             throw new BusinessException(BusinessExceptionEnum.MEMBER_MOBILE_EXIST);
         }
         Member member = new Member();
-        member.setId(System.currentTimeMillis());
+        member.setId(SnowUtil.getSnowflakeNextId());
         member.setMobile(mobile);
         memberMapper.insert(member);
         return member.getId();
