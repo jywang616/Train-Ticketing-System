@@ -1,7 +1,7 @@
 <template>
   <a-row class="login">
     <a-col :span="8" :offset="8" class="login-main">
-      <h1 style="text-align: center"><rocket-two-tone />&nbsp;12306火车票售票系统</h1>
+      <h1 style="text-align: center"><rocket-two-tone />&nbsp;火车票售票系统</h1>
       <a-form
           :model="loginForm"
           name="basic"
@@ -31,7 +31,6 @@
         <a-form-item>
           <a-button type="primary" block @click="login">登录</a-button>
         </a-form-item>
-
       </a-form>
     </a-col>
   </a-row>
@@ -39,21 +38,30 @@
 
 <script>
 import { defineComponent, reactive } from 'vue';
+import axios from 'axios';
+
 export default defineComponent({
   name: "login-view",
   setup() {
     const loginForm = reactive({
-      mobile: '18922226885',
+      mobile: '18022226886',
       code: '',
     });
 
-
+    const sendCode = () => {
+      axios.post("http://localhost:8000/member/member/send-code", {
+        mobile: loginForm.mobile
+      }).then(response => {
+        console.log(response);
+      });
+    };
     return {
       loginForm,
-
+      sendCode
     };
   },
 });
+
 </script>
 
 <style>
