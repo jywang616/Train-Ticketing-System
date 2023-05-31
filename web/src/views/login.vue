@@ -10,7 +10,7 @@
         <a-form-item
             label=""
             name="mobile"
-            :rules="[{ required: true, message: '请输入手机号' }]"
+            :rules="[{ required: true, message: '请输入手机号!' }]"
         >
           <a-input v-model:value="loginForm.mobile" placeholder="手机号"/>
         </a-form-item>
@@ -18,7 +18,7 @@
         <a-form-item
             label=""
             name="code"
-            :rules="[{ required: true, message: '请输入验证码' }]"
+            :rules="[{ required: true, message: '请输入验证码!' }]"
         >
           <a-input v-model:value="loginForm.code">
             <template #addonAfter>
@@ -31,6 +31,7 @@
         <a-form-item>
           <a-button type="primary" block @click="login">登录</a-button>
         </a-form-item>
+
       </a-form>
     </a-col>
   </a-row>
@@ -39,6 +40,8 @@
 <script>
 import { defineComponent, reactive } from 'vue';
 import axios from 'axios';
+import { notification } from 'ant-design-vue';
+
 
 export default defineComponent({
   name: "login-view",
@@ -52,16 +55,35 @@ export default defineComponent({
       axios.post("http://localhost:8000/member/member/send-code", {
         mobile: loginForm.mobile
       }).then(response => {
-        console.log(response);
+        let data = response.data;
+        if (data.success) {
+          notification.success({ description: '发送验证码成功！' });
+          loginForm.code = "2333";
+        } else {
+          notification.error({ description: data.message });
+        }
       });
     };
+
+    const login = () => {
+      axios.post("http://localhost:8000/member/member/login", loginForm).then((response) => {
+        let data = response.data;
+        if (data.success) {
+          notification.success({ description: '登录成功！' });
+          console.log("登录成功",data.content);
+        } else {
+          notification.error({ description: data.message });
+        }
+      })
+    };
+
     return {
       loginForm,
-      sendCode
+      sendCode,
+      login
     };
   },
 });
-
 </script>
 
 <style>
