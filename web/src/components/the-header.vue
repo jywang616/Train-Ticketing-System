@@ -23,6 +23,7 @@ export default defineComponent({
   setup() {
     return {
       selectedKeys1: ref(['2']),
+      collapsed: ref(false),
     };
   },
 });
