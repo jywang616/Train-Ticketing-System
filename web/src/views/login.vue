@@ -52,7 +52,7 @@ export default defineComponent({
     });
 
     const sendCode = () => {
-      axios.post("http://localhost:8000/member/member/send-code", {
+      axios.post("/member/member/send-code", {
         mobile: loginForm.mobile
       }).then(response => {
         let data = response.data;
@@ -66,7 +66,8 @@ export default defineComponent({
     };
 
     const login = () => {
-      axios.post("http://localhost:8000/member/member/login", loginForm).then((response) => {
+      //应该实现多环境配置，不能写死
+      axios.post("/member/member/login", loginForm).then((response) => {
         let data = response.data;
         if (data.success) {
           notification.success({ description: '登录成功！' });
