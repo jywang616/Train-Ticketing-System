@@ -1,8 +1,10 @@
 import { createStore } from 'vuex'
 
+const MEMBER = "MEMBER";
 export default createStore({
   state: {
-    member:{}
+    //有可能是第一次登录-->避免空指针异常
+    member:window.SessionStorage.get(MEMBER) ||{}
   },
   getters: {
   },
@@ -10,6 +12,7 @@ export default createStore({
   mutations: {
     setMember(state,_member){
       state.member=_member;
+      window.SessionStorage.set(MEMBER,_member);
     }
   },
   //启一个异步任务
