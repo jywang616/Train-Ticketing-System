@@ -1,5 +1,7 @@
 GET http://localhost:8000/member/member/count
 Accept: application/json
+token: 123
+
 ###
 
 POST http://localhost:8000/member/member/register

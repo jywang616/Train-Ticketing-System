@@ -50,7 +50,6 @@ public class LoginMemberFilter implements Ordered, GlobalFilter {
         }
 
     }
-
    //值越小优先级越高（（（（（（（您怎么不合常理
     @Override
     public int getOrder() {

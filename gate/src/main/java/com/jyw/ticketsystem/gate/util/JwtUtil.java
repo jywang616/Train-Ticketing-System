@@ -15,7 +15,7 @@ import java.util.Map;
 //跟下面的一样的233333333
 public class JwtUtil {
     private static final Logger LOG = LoggerFactory.getLogger(JwtUtil.class);
-    private static final String key = "wjy2333";
+    private static final String key = "wjy233";
 
     public static String createToken(Long id, String mobile) {
         DateTime now = DateTime.now();
@@ -60,7 +60,7 @@ public class JwtUtil {
 
     public static void main(String[] args) {
         createToken(1L, "123");
-        String token = "";
+        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE2ODU3OTk2NzUsIm1vYmlsZSI6IjEyMyIsImlkIjoxLCJleHAiOjE2ODU4ODYwNzUsImlhdCI6MTY4NTc5OTY3NX0.zQNNejDDI_HzL3zva5D4FKjzLkvXZGV0VzGwZQdegEY";
         validate(token);
 
         getJSONObject(token);
