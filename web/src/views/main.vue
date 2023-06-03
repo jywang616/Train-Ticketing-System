@@ -12,7 +12,7 @@
         <a-layout-content
             :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }"
         >
-          所有会员总数：{{count}}
+          嗨害嗨
         </a-layout-content>
       </a-layout>
     </a-layout>
