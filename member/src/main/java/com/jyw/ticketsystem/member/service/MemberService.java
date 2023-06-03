@@ -4,6 +4,7 @@ package com.jyw.ticketsystem.member.service;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.jwt.JWTUtil;
 import com.jyw.ticketsystem.common.exception.BusinessException;
 import com.jyw.ticketsystem.common.exception.BusinessExceptionEnum;
 import com.jyw.ticketsystem.common.util.SnowUtil;
@@ -20,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class MemberService {
@@ -80,7 +82,12 @@ public class MemberService {
        /* MemberLoginResp memberLoginResp =new MemberLoginResp();
         memberLoginResp.setId(memberDB.getId());
         memberLoginResp.setMobile(mobile);*/
-        return BeanUtil.copyProperties(memberDB,MemberLoginResp.class);
+        MemberLoginResp memberLoginResp= BeanUtil.copyProperties(memberDB,MemberLoginResp.class);
+        Map<String,Object> map = BeanUtil.beanToMap(memberLoginResp);
+        String key = "gloriawang";
+        String token=JWTUtil.createToken(map,key.getBytes());
+        memberLoginResp.setToken(token);
+        return memberLoginResp;
     }
 
     private Member selectByMobile(String mobile) {
