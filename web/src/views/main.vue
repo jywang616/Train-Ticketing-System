@@ -20,29 +20,17 @@
 </template>
 <script>
 
-import { defineComponent,ref} from 'vue';
+import { defineComponent} from 'vue';
 import TheHeaderView from "@/components/the-header";
 import TheSiderView from "@/components/the-sider";
-import axios from "axios";
-import {notification} from "ant-design-vue";
 export default defineComponent({
   components: {
     TheSiderView,
     TheHeaderView,
   },
   setup() {
-    const count = ref(0);
-    axios.get("/member/member/count").then((response) => {
-      let data = response.data;
-      if (data.success) {
-        //给count取值赋值都要.value
-        count.value = data.content;
-      } else {
-        notification.error({ description: data.message });
-      }
-    })
     return {
-      count
+      /*count*/
     };
   },
 });
