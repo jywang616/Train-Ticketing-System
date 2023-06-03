@@ -4,7 +4,7 @@ const MEMBER = "MEMBER";
 export default createStore({
   state: {
     //有可能是第一次登录-->避免空指针异常
-    member:window.SessionStorage.get(MEMBER) ||{}
+    member:window.SessionStorage.get(MEMBER) || {}
   },
   getters: {
   },
