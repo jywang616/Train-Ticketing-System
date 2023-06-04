@@ -14,7 +14,7 @@
       <template v-if="column.dataIndex === 'operation'">
         <a-space>
           <a-popconfirm
-              title="删除后不可恢复，确认删除?"
+              title="删除后不可恢复，是否确认删除？"
               @confirm="onDelete(record)"
               ok-text="确认" cancel-text="取消">
             <a style="color: red">删除</a>
@@ -120,7 +120,7 @@ export default defineComponent({
       axios.delete("/member/passenger/delete/" + record.id).then((response) => {
         const data = response.data;
         if (data.success) {
-          notification.success({description: "删除成功！"});
+          notification.success({description: "删除成功"});
           handleQuery({
             page: pagination.value.current,
             size: pagination.value.pageSize,
