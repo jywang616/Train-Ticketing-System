@@ -1,4 +1,4 @@
-<template xmlns:color="http://www.w3.org/1999/xhtml">
+<template>
   <a-layout-header class="header">
     <div class="logo" />
     <div style="float:right; color:white;">
@@ -8,30 +8,45 @@
       </router-link>
     </div>
     <a-menu
-        v-model:selectedKeys="selectedKeys1"
+        v-model:selectedKeys="selectedKeys"
         theme="dark"
         mode="horizontal"
         :style="{ lineHeight: '64px' }"
     >
-      <a-menu-item key="1">nav 111</a-menu-item>
-      <a-menu-item key="2">nav 2</a-menu-item>
-      <a-menu-item key="3">nav 3</a-menu-item>
+      <a-menu-item key="/welcome">
+        <router-link to="/welcome">
+          <coffee-outlined />&nbsp;欢迎
+        </router-link>
+      </a-menu-item>
+      <a-menu-item key="/passenger">
+        <router-link to="/passenger">
+          <coffee-outlined />&nbsp;乘车人管理
+        </router-link>
+      </a-menu-item>
     </a-menu>
 
   </a-layout-header>
 </template>
 
 <script>
-import {defineComponent, ref} from 'vue';
+import {defineComponent, ref,watch} from 'vue';
 import store from "@/store"
+import router from "@/router"
 
 export default defineComponent({
   name: "the-header-view",
   setup() {
     //header只是显示，不修改member，就不用响应变量
     let member=store.state.member;
+    const selectedKeys = ref([]);
+
+    watch(() => router.currentRoute.value.path, (newValue) => {
+      console.log('watch', newValue);
+      selectedKeys.value = [];
+      selectedKeys.value.push(newValue);
+    }, {immediate: true});
     return {
-      selectedKeys1: ref(['2']),
+      selectedKeys,
       member
     };
   },

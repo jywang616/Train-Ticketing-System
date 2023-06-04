@@ -74,7 +74,7 @@ export default defineComponent({
         if (data.success) {
           notification.success({ description: '登录成功！' });
           //登录成功之后跳到控台主页
-          router.push("/");
+          router.push("/welcome");
           //setMember的第一个参数内置的，就不用传了
           store.commit("setMember",data.content);
         } else {
