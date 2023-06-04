@@ -3,9 +3,9 @@ package com.jyw.ticketsystem.common.interceptor;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import com.jyw.ticketsystem.common.util.JwtUtil;
 import com.jyw.ticketsystem.common.context.LoginMemberContext;
 import com.jyw.ticketsystem.common.resp.MemberLoginResp;
+import com.jyw.ticketsystem.common.util.JwtUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
@@ -13,9 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-/**
- * 拦截器：Spring框架特有的，常用于登录校验，权限校验，请求日志打印
- */
 @Component
 public class MemberInterceptor implements HandlerInterceptor {
 
@@ -23,7 +20,6 @@ public class MemberInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        LOG.info("MemberInterceptor开始");
         //获取header的token参数
         String token = request.getHeader("token");
         if (StrUtil.isNotBlank(token)) {
