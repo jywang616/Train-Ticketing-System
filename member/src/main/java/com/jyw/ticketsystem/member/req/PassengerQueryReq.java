@@ -1,6 +1,8 @@
 package com.jyw.ticketsystem.member.req;
 
-public class PassengerQueryReq  {
+import com.jyw.ticketsystem.common.req.PageReq;
+
+public class PassengerQueryReq extends PageReq {
 
     private Long memberId;
 
