@@ -2,6 +2,7 @@ package com.jyw.ticketsystem.member.service;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateTime;
+import com.jyw.ticketsystem.common.context.LoginMemberContext;
 import com.jyw.ticketsystem.common.util.SnowUtil;
 import com.jyw.ticketsystem.member.domain.Passenger;
 import com.jyw.ticketsystem.member.mapper.PassengerMapper;
@@ -17,6 +18,7 @@ public class PassengerService {
     public void save(PassengerSaveReq req){
         DateTime now=DateTime.now();
         Passenger passenger=BeanUtil.copyProperties(req,Passenger.class);
+        passenger.setMemberId(LoginMemberContext.getId());
         passenger.setId(SnowUtil.getSnowflakeNextId());
         passenger.setCreateTime(now);
         passenger.setUpdateTime(now);
