@@ -2,28 +2,30 @@ package com.jyw.ticketsystem.generator.server;
 
 
 import com.jyw.ticketsystem.generator.util.FreemarkerUtil;
+import freemarker.template.TemplateException;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ServerGenerator {
-    static String servicePath = "[module]/src/main/java/com/jyw/ticketsystem/[module]/service/";
+    static String serverPath = "[module]/src/main/java/com/jyw/ticketsystem/[module]/";
    static String pomPath="generator\\pom.xml";
     static {
-        new File(servicePath).mkdirs();
+        new File(serverPath).mkdirs();
     }
 
     public static void main(String[] args) throws Exception {
         String generatorPath = getGeneratorPath();
         String module = generatorPath.replace("src/main/resources/generator-config-", "").replace(".xml", "");
         System.out.println("module: " + module);
-        servicePath = servicePath.replace("[module]", module);
-        System.out.println("servicePath: " + servicePath);
+        serverPath = serverPath.replace("[module]", module);
+        System.out.println("servicePath: " + serverPath);
         Document document = new SAXReader().read("generator/" + generatorPath);
         Node table = document.selectSingleNode("//table");
         System.out.println(table);
@@ -43,8 +45,17 @@ public class ServerGenerator {
         param.put("do_main", do_main);
         System.out.println("参数：" + param);
 
-        FreemarkerUtil.initConfig("service.ftl");
-        FreemarkerUtil.generator(servicePath + Domain + "Service.java", param);
+        gen(Domain, param, "service");
+        gen(Domain, param, "controller");
+    }
+    private static void gen(String Domain, Map<String, Object> param, String target) throws IOException, TemplateException {
+        FreemarkerUtil.initConfig(target + ".ftl");
+        String toPath = serverPath + target + "/";
+        new File(toPath).mkdirs();
+        String Target = target.substring(0, 1).toUpperCase() + target.substring(1);
+        String fileName = toPath + Domain + Target + ".java";
+        System.out.println("开始生成：" + fileName);
+        FreemarkerUtil.generator(fileName, param);
     }
 
     private static String getGeneratorPath() throws DocumentException {
