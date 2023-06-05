@@ -1,7 +1,7 @@
 <template>
   <a-row class="login">
     <a-col :span="8" :offset="8" class="login-main">
-      <h1 style="text-align: center"><rocket-two-tone />&nbsp;火车票售票系统</h1>
+      <h1 style="text-align: center"><android-outlined />&nbsp;火车票售票系统</h1>
       <a-form
           :model="loginForm"
           name="basic"
