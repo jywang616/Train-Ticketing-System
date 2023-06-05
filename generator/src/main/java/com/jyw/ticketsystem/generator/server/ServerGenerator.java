@@ -1,6 +1,8 @@
 package com.jyw.ticketsystem.generator.server;
 
 
+import com.jyw.ticketsystem.generator.util.DbUtil;
+import com.jyw.ticketsystem.generator.util.Field;
 import com.jyw.ticketsystem.generator.util.FreemarkerUtil;
 import freemarker.template.TemplateException;
 import org.dom4j.Document;
@@ -11,6 +13,7 @@ import org.dom4j.io.SAXReader;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ServerGenerator {
@@ -35,9 +38,24 @@ public class ServerGenerator {
         // FreemarkerUtil.initConfig("test.ftl");
         // Map<String, Object> param = new HashMap<>();
         // param.put("domain", "Test1");
+
+        // 为DbUtil设置数据源
+        Node connectionURL = document.selectSingleNode("//@connectionURL");
+        Node userId = document.selectSingleNode("//@userId");
+        Node password = document.selectSingleNode("//@password");
+        System.out.println("url: " + connectionURL.getText());
+        System.out.println("user: " + userId.getText());
+        System.out.println("password: " + password.getText());
+        DbUtil.url = connectionURL.getText();
+        DbUtil.user = userId.getText();
+        DbUtil.password = password.getText();
+
         String Domain = domainObjectName.getText();
         String domain = Domain.substring(0, 1).toLowerCase() + Domain.substring(1);
         String do_main = tableName.getText().replaceAll("_", "-");
+
+        String tableNameCn = DbUtil.getTableComment(tableName.getText());
+        List<Field> fieldList = DbUtil.getColumnByTableName(tableName.getText());
         // 组装参数
         Map<String, Object> param = new HashMap<>();
         param.put("Domain", Domain);

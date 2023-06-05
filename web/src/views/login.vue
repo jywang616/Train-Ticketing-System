@@ -1,4 +1,5 @@
 <template>
+  <div id="background"></div>
   <a-row class="login">
     <a-col :span="8" :offset="8" class="login-main">
       <h1 style="text-align: center"><android-outlined />&nbsp;火车票售票系统</h1>
@@ -93,6 +94,14 @@ export default defineComponent({
 </script>
 
 <style>
+#background{
+  background:url("../assets/bg.jpg");
+  width:100%;
+  height:100%;
+  position:fixed;
+  background-size: 100% 100%;
+}
+
 .login-main h1 {
   font-size: 25px;
   font-weight: bold;
