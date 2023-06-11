@@ -2,6 +2,7 @@ package com.jyw.ticketsystem.member.req;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Date;
 
@@ -15,7 +16,7 @@ public class PassengerSaveReq {
     /**
     * member表id
     */
-
+                @NotNull(message = "member表id不能为空")
     private Long memberId;
 
     /**

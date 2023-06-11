@@ -71,9 +71,12 @@ public class ServerGenerator {
         param.put("typeSet", typeSet);
         System.out.println("参数：" + param);
 
+
         /*gen(Domain, param, "service", "service");
         gen(Domain, param, "controller", "controller");
         gen(Domain, param, "req", "saveReq");*/
+        gen(Domain, param, "req", "queryReq");
+        gen(Domain, param, "resp", "queryResp");
     }
     private static void gen(String Domain, Map<String, Object> param, String packageName, String target) throws IOException, TemplateException {
         FreemarkerUtil.initConfig(target + ".ftl");

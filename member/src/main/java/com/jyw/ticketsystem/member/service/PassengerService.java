@@ -5,7 +5,7 @@ import cn.hutool.core.date.DateTime;
 import cn.hutool.core.util.ObjectUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.jyw.ticketsystem.common.context.LoginMemberContext;
+
 import com.jyw.ticketsystem.common.resp.PageResp;
 import com.jyw.ticketsystem.common.util.SnowUtil;
 import com.jyw.ticketsystem.member.domain.Passenger;
@@ -28,7 +28,6 @@ public class PassengerService {
         DateTime now=DateTime.now();
         Passenger passenger=BeanUtil.copyProperties(req,Passenger.class);
         if(ObjectUtil.isNull(passenger.getId())) {
-            passenger.setMemberId(LoginMemberContext.getId());
             passenger.setId(SnowUtil.getSnowflakeNextId());
             passenger.setCreateTime(now);
             passenger.setUpdateTime(now);
@@ -43,9 +42,7 @@ public class PassengerService {
         PassengerExample passengerExample=new PassengerExample();
         passengerExample.setOrderByClause("id desc");
         PassengerExample.Criteria criteria=passengerExample.createCriteria();
-        if(ObjectUtil.isNotNull(req.getMemberId())) {
-            criteria.andMemberIdEqualTo(req.getMemberId());
-        }
+
         PageHelper.startPage(req.getPage(), req.getSize());
         List<Passenger> passengerList=passengerMapper.selectByExample((passengerExample));
 

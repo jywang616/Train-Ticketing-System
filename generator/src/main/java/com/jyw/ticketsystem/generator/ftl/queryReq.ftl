@@ -1,6 +1,6 @@
-package com.jyw.tickesystem.${module}.req;
+package com.jyw.ticketsystem.${module}.req;
 
-import com.jyw.tickesystem.common.req.PageReq;
+import com.jyw.ticketsystem.common.req.PageReq;
 
 public class ${Domain}QueryReq extends PageReq {
 
