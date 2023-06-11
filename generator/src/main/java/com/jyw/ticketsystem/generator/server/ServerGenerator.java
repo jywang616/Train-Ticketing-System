@@ -63,6 +63,7 @@ public class ServerGenerator {
         // 组装参数
         Map<String, Object> param = new HashMap<>();
         param.put("Domain", Domain);
+        param.put("module", module);
         param.put("domain", domain);
         param.put("do_main", do_main);
         param.put("tableNameCn", tableNameCn);
@@ -70,9 +71,9 @@ public class ServerGenerator {
         param.put("typeSet", typeSet);
         System.out.println("参数：" + param);
 
-        gen(Domain, param, "service", "service");
+        /*gen(Domain, param, "service", "service");
         gen(Domain, param, "controller", "controller");
-        gen(Domain, param, "req", "saveReq");
+        gen(Domain, param, "req", "saveReq");*/
     }
     private static void gen(String Domain, Map<String, Object> param, String packageName, String target) throws IOException, TemplateException {
         FreemarkerUtil.initConfig(target + ".ftl");

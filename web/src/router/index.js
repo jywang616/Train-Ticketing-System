@@ -17,7 +17,11 @@ const routes = [{
     },{
       path:'passenger',
       component:()=>import('../views/main/passenger.vue')
-    }]
+    },
+      {
+        path:'exchange',
+        component:()=>import('../views/main/exchange.vue')
+      }]
   },
   {
     path: '',

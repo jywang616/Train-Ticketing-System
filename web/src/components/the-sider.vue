@@ -15,6 +15,11 @@
           <smile-outlined />&nbsp;乘车人管理
         </router-link>
       </a-menu-item>
+      <a-menu-item key="/exchange">
+        <router-link to="/exchange">
+          <smile-outlined />&nbsp;中转购票
+        </router-link>
+      </a-menu-item>
     </a-menu>
   </a-layout-sider>
 </template>

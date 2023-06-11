@@ -1,12 +1,12 @@
-package com.jyw.ticketsystem.member.controller;
+package com.jyw.ticketsystem.${module}.controller;
 
 import com.jyw.ticketsystem.common.context.LoginMemberContext;
 import com.jyw.ticketsystem.common.resp.CommonResp;
 import com.jyw.ticketsystem.common.resp.PageResp;
-import com.jyw.ticketsystem.member.req.${Domain}QueryReq;
-import com.jyw.ticketsystem.member.req.${Domain}SaveReq;
-import com.jyw.ticketsystem.member.resp.${Domain}QueryResp;
-import com.jyw.ticketsystem.member.service.${Domain}Service;
+import com.jyw.ticketsystem.${module}.req.${Domain}QueryReq;
+import com.jyw.ticketsystem.${module}.req.${Domain}SaveReq;
+import com.jyw.ticketsystem.${module}.resp.${Domain}QueryResp;
+import com.jyw.ticketsystem.${module}.service.${Domain}Service;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;

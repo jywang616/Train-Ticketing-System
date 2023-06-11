@@ -1,4 +1,4 @@
-package com.jyw.ticketsystem.member.req;
+package com.jyw.ticketsystem.${module}.req;
 
 <#list typeSet as type>
     <#if type=='Date'>
