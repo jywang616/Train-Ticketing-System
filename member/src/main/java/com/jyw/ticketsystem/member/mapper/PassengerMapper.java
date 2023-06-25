@@ -3,6 +3,7 @@ package com.jyw.ticketsystem.member.mapper;
 import com.jyw.ticketsystem.member.domain.Passenger;
 import com.jyw.ticketsystem.member.domain.PassengerExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PassengerMapper {

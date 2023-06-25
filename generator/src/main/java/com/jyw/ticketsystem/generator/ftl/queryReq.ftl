@@ -1,6 +1,6 @@
 package com.jyw.ticketsystem.${module}.req;
 
-import com.jyw.ticketsystem.common.req.PageReq;
+import req.common.com.jyw.ticketsystem.ticket.PageReq;
 
 public class ${Domain}QueryReq extends PageReq {
 

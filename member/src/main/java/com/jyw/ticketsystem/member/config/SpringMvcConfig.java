@@ -13,7 +13,7 @@ public class SpringMvcConfig implements WebMvcConfigurer {
     LogInterceptor logInterceptor;
 
     @Resource
-   MemberInterceptor memberInterceptor;
+    MemberInterceptor memberInterceptor;
 
    @Override
    public void addInterceptors(InterceptorRegistry registry) {

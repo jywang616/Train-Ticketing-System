@@ -1,11 +1,11 @@
 package com.jyw.ticketsystem.member.controller;
 
-import com.jyw.ticketsystem.common.resp.CommonResp;
 import com.jyw.ticketsystem.member.req.MemberLoginReq;
 import com.jyw.ticketsystem.member.req.MemberRegisterReq;
 import com.jyw.ticketsystem.member.req.MemberSendCodeReq;
 import com.jyw.ticketsystem.member.resp.MemberLoginResp;
 import com.jyw.ticketsystem.member.service.MemberService;
+import com.jyw.ticketsystem.common.resp.CommonResp;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;

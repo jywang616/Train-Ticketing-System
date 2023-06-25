@@ -6,13 +6,13 @@ import cn.hutool.core.util.ObjectUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
+import com.jyw.ticketsystem.member.req.PassengerSaveReq;
 import com.jyw.ticketsystem.common.resp.PageResp;
 import com.jyw.ticketsystem.common.util.SnowUtil;
 import com.jyw.ticketsystem.member.domain.Passenger;
 import com.jyw.ticketsystem.member.domain.PassengerExample;
 import com.jyw.ticketsystem.member.mapper.PassengerMapper;
 import com.jyw.ticketsystem.member.req.PassengerQueryReq;
-import com.jyw.ticketsystem.member.req.PassengerSaveReq;
 import com.jyw.ticketsystem.member.resp.PassengerQueryResp;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;

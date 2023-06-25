@@ -1,8 +1,8 @@
 package com.jyw.ticketsystem.${module}.controller;
 
-import com.jyw.ticketsystem.common.context.LoginMemberContext;
-import com.jyw.ticketsystem.common.resp.CommonResp;
-import com.jyw.ticketsystem.common.resp.PageResp;
+import context.common.com.jyw.ticketsystem.ticket.LoginMemberContext;
+import resp.common.com.jyw.ticketsystem.ticket.CommonResp;
+import resp.common.com.jyw.ticketsystem.ticket.PageResp;
 import com.jyw.ticketsystem.${module}.req.${Domain}QueryReq;
 import com.jyw.ticketsystem.${module}.req.${Domain}SaveReq;
 import com.jyw.ticketsystem.${module}.resp.${Domain}QueryResp;
