@@ -1,4 +1,4 @@
-package com.jyw.ticketsystem.generator.server;
+package com.jyw.ticketsystem.generator.gen;
 
 
 import com.jyw.ticketsystem.generator.util.DbUtil;
