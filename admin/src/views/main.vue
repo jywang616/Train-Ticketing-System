@@ -6,7 +6,6 @@
       <a-layout-content
           :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }"
       >
-<!--        根据子路由来，内容区域动态变化-->
         <router-view></router-view>
       </a-layout-content>
     </a-layout>
@@ -29,4 +28,5 @@ export default defineComponent({
 });
 </script>
 <style>
+
 </style>

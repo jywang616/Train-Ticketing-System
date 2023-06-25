@@ -34,7 +34,7 @@
         <a-modal v-model:visible="visible" title="乘车人" @ok="handleOk"
                  ok-text="确认" cancel-text="取消">
             <a-form :model="passenger" :label-col="{span: 4}" :wrapper-col="{ span: 20 }">
-                        <a-form-item label="member表id">
+                        <a-form-item label="会员id">
                                 <a-input v-model:value="passenger.memberId" />
                         </a-form-item>
                         <a-form-item label="姓名">
@@ -83,7 +83,7 @@
             let loading = ref(false);
             const columns = [
                 {
-                    title: 'member表id',
+                    title: '会员id',
                     dataIndex: 'memberId',
                     key: 'memberId',
                 },

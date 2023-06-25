@@ -1,6 +1,5 @@
 <template>
-  <h1>中转站功能开发ing</h1>
-  <img src="./image/exchange_temp.jpg"/>
+  <h1>火车票售票系统管理端</h1>
 </template>
 <script>
 import { defineComponent } from 'vue';
@@ -13,4 +12,4 @@ export default defineComponent({
 });
 </script>
 <style>
-</style>
+</style>yle>

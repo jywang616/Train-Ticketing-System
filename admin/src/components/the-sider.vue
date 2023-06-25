@@ -7,17 +7,12 @@
     >
       <a-menu-item key="/welcome">
         <router-link to="/welcome">
-          <coffee-outlined />&nbsp;欢迎
+          <coffee-outlined /> &nbsp; 欢迎
         </router-link>
       </a-menu-item>
-      <a-menu-item key="/passenger">
-        <router-link to="/passenger">
-          <smile-outlined />&nbsp;乘车人管理
-        </router-link>
-      </a-menu-item>
-      <a-menu-item key="/exchange">
-        <router-link to="/exchange">
-          <smile-outlined />&nbsp;中转购票
+      <a-menu-item key="/about">
+        <router-link to="/about">
+          <user-outlined /> &nbsp; 关于
         </router-link>
       </a-menu-item>
     </a-menu>
@@ -27,6 +22,7 @@
 <script>
 import {defineComponent, ref, watch} from 'vue';
 import router from "@/router";
+
 export default defineComponent({
   name: "the-sider-view",
   setup() {
@@ -38,7 +34,7 @@ export default defineComponent({
       selectedKeys.value.push(newValue);
     }, {immediate: true});
     return {
-      selectedKeys,
+      selectedKeys
     };
   },
 });
