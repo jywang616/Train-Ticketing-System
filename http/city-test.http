@@ -1,0 +1,4 @@
+GET http://localhost:8080/ticket/ticket/query-list?page=1&size=1
+Accept: application/json
+
+###

@@ -20,7 +20,7 @@ import java.util.Set;
 
 public class ServerGenerator {
     static boolean readOnly=false;
-    static String vuePath="web/src/views/main/";
+    static String vuePath="admin/src/views/main/";
     static String serverPath = "[module]/src/main/java/com/jyw/ticketsystem/[module]/";
    static String pomPath="generator\\pom.xml";
     static {
@@ -75,11 +75,11 @@ public class ServerGenerator {
         System.out.println("参数：" + param);
 
 
-        /*gen(Domain, param, "service", "service");
+        gen(Domain, param, "service", "service");
         gen(Domain, param, "controller", "controller");
-        gen(Domain, param, "req", "saveReq");*/
-        //gen(Domain, param, "req", "queryReq");
-        //gen(Domain, param, "resp", "queryResp");
+        gen(Domain, param, "req", "saveReq");
+        gen(Domain, param, "req", "queryReq");
+        gen(Domain, param, "resp", "queryResp");
         genVue(do_main,param);
     }
     private static void gen(String Domain, Map<String, Object> param, String packageName, String target) throws IOException, TemplateException {

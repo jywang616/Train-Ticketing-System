@@ -6,8 +6,8 @@ import cn.hutool.core.util.ObjectUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
-import resp.common.com.jyw.ticketsystem.ticket.PageResp;
-import util.common.com.jyw.ticketsystem.ticket.SnowUtil;
+import com.jyw.ticketsystem.common.resp.PageResp;
+import com.jyw.ticketsystem.common.util.SnowUtil;
 import com.jyw.ticketsystem.${module}.domain.${Domain};
 import com.jyw.ticketsystem.${module}.domain.${Domain}Example;
 import com.jyw.ticketsystem.${module}.mapper.${Domain}Mapper;

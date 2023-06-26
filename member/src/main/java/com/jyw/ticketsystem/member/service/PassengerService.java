@@ -45,7 +45,7 @@ public class PassengerService {
 
         PageHelper.startPage(req.getPage(), req.getSize());
         List<Passenger> passengerList=passengerMapper.selectByExample((passengerExample));
-
+        System.out.println(passengerList);
         PageInfo<Passenger> pageInfo= new PageInfo<>(passengerList);
 
         List<PassengerQueryResp> list= BeanUtil.copyToList(passengerList,PassengerQueryResp.class);
