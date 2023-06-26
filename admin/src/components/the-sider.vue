@@ -17,7 +17,7 @@
       </a-menu-item>
       <a-menu-item key="/station">
         <router-link to="/station">
-          <user-outlined /> &nbsp;车站管理
+          <user-outlined /> &nbsp;城市管理
         </router-link>
       </a-menu-item>
       <a-menu-item key="/train">
