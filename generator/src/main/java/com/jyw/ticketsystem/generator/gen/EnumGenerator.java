@@ -1,6 +1,7 @@
 package com.jyw.ticketsystem.generator.gen;
 
 import cn.hutool.core.util.StrUtil;
+import com.jyw.ticketsystem.business.enums.SeatTypeEnum;
 import com.jyw.ticketsystem.business.enums.TrainTypeEnum;
 import com.jyw.ticketsystem.member.enums.PassengerTypeEnum;
 
@@ -18,6 +19,7 @@ public class EnumGenerator {
         try {
             toJson(PassengerTypeEnum.class, bufferObject, bufferArray);
             toJson(TrainTypeEnum.class, bufferObject, bufferArray);
+            toJson(SeatTypeEnum.class, bufferObject, bufferArray);
             StringBuffer buffer = bufferObject.append("\r\n").append(bufferArray);
             writeJs(buffer);
         } catch (Exception e) {
