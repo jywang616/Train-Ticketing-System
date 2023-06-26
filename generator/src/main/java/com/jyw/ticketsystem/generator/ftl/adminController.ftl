@@ -1,6 +1,6 @@
-package com.jyw.ticketsystem.${module}.controller;
+package com.jyw.ticketsystem.${module}.controller.admin;
 
-import context.common.com.jyw.ticketsystem.ticket.LoginMemberContext;
+
 import com.jyw.ticketsystem.common.resp.CommonResp;
 import com.jyw.ticketsystem.common.resp.PageResp;
 import com.jyw.ticketsystem.${module}.req.${Domain}QueryReq;
@@ -12,8 +12,8 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/${do_main}")
-public class ${Domain}Controller {
+@RequestMapping("/admin/${do_main}")
+public class ${Domain}AdminController {
     @Resource
     private ${Domain}Service ${domain}Service;
 
