@@ -1,6 +1,7 @@
 package com.jyw.ticketsystem.business.service;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.util.ObjectUtil;
 import com.github.pagehelper.PageHelper;
@@ -12,12 +13,14 @@ import com.jyw.ticketsystem.business.mapper.TrainCarriageMapper;
 import com.jyw.ticketsystem.business.req.TrainCarriageQueryReq;
 import com.jyw.ticketsystem.business.req.TrainCarriageSaveReq;
 import com.jyw.ticketsystem.business.resp.TrainCarriageQueryResp;
+import com.jyw.ticketsystem.common.exception.BusinessException;
+import com.jyw.ticketsystem.common.exception.BusinessExceptionEnum;
 import com.jyw.ticketsystem.common.resp.PageResp;
 import com.jyw.ticketsystem.common.util.SnowUtil;
 import jakarta.annotation.Resource;
-import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -38,6 +41,10 @@ public class TrainCarriageService {
 
         TrainCarriage trainCarriage = BeanUtil.copyProperties(req, TrainCarriage.class);
         if (ObjectUtil.isNull(trainCarriage.getId())) {
+            TrainCarriage trainCarriageDB = selectByUnique(req.getTrainCode(), req.getIndex());
+            if (ObjectUtil.isNotEmpty(trainCarriageDB)) {
+            throw new BusinessException(BusinessExceptionEnum.BUSINESS_TRAIN_CARRIAGE_INDEX_UNIQUE_ERROR);
+            }
             trainCarriage.setId(SnowUtil.getSnowflakeNextId());
             trainCarriage.setCreateTime(now);
             trainCarriage.setUpdateTime(now);
@@ -48,6 +55,18 @@ public class TrainCarriageService {
         }
     }
 
+    private TrainCarriage selectByUnique(String trainCode, Integer index) {
+        TrainCarriageExample trainCarriageExample = new TrainCarriageExample();
+        trainCarriageExample.createCriteria()
+                .andTrainCodeEqualTo(trainCode)
+                .andIndexEqualTo(index);
+        List<TrainCarriage> list = trainCarriageMapper.selectByExample(trainCarriageExample);
+        if (CollUtil.isNotEmpty(list)) {
+            return list.get(0);
+        } else {
+            return null;
+        }
+    }
     public PageResp<TrainCarriageQueryResp> queryList(TrainCarriageQueryReq req) {
         TrainCarriageExample trainCarriageExample = new TrainCarriageExample();
         trainCarriageExample.setOrderByClause("train_code asc, `index` asc");
