@@ -2,7 +2,7 @@
   <a-select v-model:value="name" show-search allowClear
             :filterOption="filterNameOption"
             @change="onChange" placeholder="车站选择"
-            :style="'width: ' + _width">
+            :style="'width: ' + localWidth">
     <a-select-option v-for="item in stations" :key="item.name" :value="item.name" :label="item.name + item.namePinyin + item.namePy">
       {{item.name}} {{item.namePinyin}} ~ {{item.namePy}}
     </a-select-option>
@@ -22,9 +22,9 @@ export default defineComponent({
   setup(props, {emit}) {
     const name = ref();
     const stations = ref([]);
-    const _width = ref(props.width);
+    const localWidth = ref(props.width);
     if (Tool.isEmpty(props.width)) {
-      _width.value = "100%";
+      localWidth.value = "100%";
     }
 
     watch(() => props.modelValue, ()=>{
@@ -69,7 +69,7 @@ export default defineComponent({
       stations,
       filterNameOption,
       onChange,
-      _width
+      localWidth
     };
   },
 });
