@@ -1,3 +1,4 @@
+/*
 package com.jyw.ticketsystem.batch.job;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -14,4 +15,4 @@ public class SpringBootTestJob {
         // 增加分布式锁可以解决集群问题
         System.out.println("TEST");
     }
-}
+}*/
