@@ -10,24 +10,33 @@ const routes = [{
     },{
       path:'about',
       component:()=>import('../views/main/about.vue'),
-    },{
-        path:'station',
-        component: ()=>import('../views/main/station.vue'),
-    },{
-        path:'train',
-        component: ()=>import('../views/main/train.vue'),
-    },{
-        path:'train-station',
-        component: ()=>import('../views/main/train-station.vue'),
-    },{
-        path:'train-carriage',
-        component: ()=>import('../views/main/train-carriage.vue'),
-    },{
-        path:'train-seat',
-        component: ()=>import('../views/main/train-seat.vue'),
-    }]
-  },
-  {
+    },
+        {
+            path: 'base/',
+            children: [{
+                path: 'station',
+                component: () => import('../views/main/base/station.vue'),
+            }, {
+                path: 'train',
+                component: () => import('../views/main/base/train.vue'),
+            }, {
+                path: 'train-station',
+                component: () => import('../views/main/base/train-station.vue'),
+            }, {
+                path: 'train-carriage',
+                component: () => import('../views/main/base/train-carriage.vue'),
+            }, {
+                path: 'train-seat',
+                component: () => import('../views/main/base/train-seat.vue'),
+            }]
+        }, {
+            path: 'batch/',
+            children: [{
+                path: 'job',
+                component: () => import('../views/main/batch/job.vue')
+            }]
+        }]
+}, {
     path: '',
     redirect: '/welcome'
   },

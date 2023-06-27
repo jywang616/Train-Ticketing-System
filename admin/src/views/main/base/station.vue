@@ -78,7 +78,7 @@
                     key: 'namePinyin',
                 },
                 {
-                    title: '站名拼音首字母',
+                    title: '拼音首字母',
                     dataIndex: 'namePy',
                     key: 'namePy',
                 },
