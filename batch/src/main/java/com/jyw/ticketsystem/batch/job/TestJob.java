@@ -10,12 +10,15 @@ public class TestJob implements Job {
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        System.out.println("TestJob TEST开始");
+        System.out.println("继续抓虫子");
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("TestJob TEST结束");
+        System.out.println("抓不到");
+        System.out.println("抓不到");
+        System.out.println("抓不到");
+        System.out.println("抓不到");
     }
 }
