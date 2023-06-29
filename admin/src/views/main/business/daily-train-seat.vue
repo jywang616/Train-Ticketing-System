@@ -142,10 +142,11 @@
                 });
             };
 
-            const handleTableChange = (pagination) => {
+            const handleTableChange = (page) => {
+              pagination.value.pageSize=page.pageSize;
                 handleQuery({
-                    page: pagination.current,
-                    size: pagination.pageSize
+                    page: page.current,
+                    size: page.pageSize
                 });
             };
 
