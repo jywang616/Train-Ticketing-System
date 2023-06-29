@@ -8,85 +8,85 @@
     >
       <a-menu-item key="/welcome">
         <router-link to="/welcome">
-          <coffee-outlined /> &nbsp; 欢迎
+          <crown-two-tone /> &nbsp; 欢迎
         </router-link>
       </a-menu-item>
       <a-menu-item key="/about">
         <router-link to="/about">
-          <user-outlined /> &nbsp; 关于
+          <compass-two-tone /> &nbsp; 关于
         </router-link>
       </a-menu-item>
       <a-sub-menu key="business">
         <template #title>
           <span>
-            <UnorderedListOutlined />
+            <profile-two-tone />
             业务管理
           </span>
         </template>
         <a-menu-item key="/business/daily-train">
           <router-link to="/business/daily-train">
-            <user-outlined /> &nbsp; 每日车次
+            <dashboard-two-tone /> &nbsp; 每日车次
           </router-link>
         </a-menu-item>
         <a-menu-item key="/business/daily-train-station">
           <router-link to="/business/daily-train-station">
-            <user-outlined /> &nbsp; 每日车站
+            <shop-two-tone /> &nbsp; 每日车站
           </router-link>
         </a-menu-item>
         <a-menu-item key="/business/daily-train-carriage">
           <router-link to="/business/daily-train-carriage">
-            <user-outlined /> &nbsp; 每日车厢
+            <car-two-tone /> &nbsp; 每日车厢
           </router-link>
         </a-menu-item>
         <a-menu-item key="/business/daily-train-seat">
           <router-link to="/business/daily-train-seat">
-            <user-outlined /> &nbsp; 每日座位
+            <cloud-two-tone /> &nbsp; 每日座位
           </router-link>
         </a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="base">
         <template #title>
           <span>
-            <UnorderedListOutlined />
+            <profile-two-tone />
             基础数据
           </span>
         </template>
         <a-menu-item key="/base/station">
           <router-link to="/base/station">
-            <user-outlined /> &nbsp; 车站管理
+            <home-two-tone /> &nbsp; 车站管理
           </router-link>
         </a-menu-item>
         <a-menu-item key="/base/train">
           <router-link to="/base/train">
-            <user-outlined /> &nbsp; 火车管理
+            <dashboard-two-tone /> &nbsp; 车次管理
           </router-link>
         </a-menu-item>
         <a-menu-item key="/base/train-station">
           <router-link to="/base/train-station">
-            <user-outlined /> &nbsp; 火车车站
+            <shop-two-tone />&nbsp; 经停车站
           </router-link>
         </a-menu-item>
         <a-menu-item key="/base/train-carriage">
           <router-link to="/base/train-carriage">
-            <user-outlined /> &nbsp; 火车车厢
+            <car-two-tone />&nbsp; 火车车厢
           </router-link>
         </a-menu-item>
         <a-menu-item key="/base/train-seat">
           <router-link to="/base/train-seat">
-            <user-outlined /> &nbsp; 火车座位
+            <cloud-two-tone /> &nbsp; 火车座位
           </router-link>
         </a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="batch">
         <template #title>
           <span>
-            <UnorderedListOutlined />
+            <profile-two-tone />
             跑批管理
           </span>
         </template>
         <a-menu-item key="/batch/job">
           <router-link to="/batch/job">
-            <MenuUnfoldOutlined /> &nbsp; 任务管理
+            <printer-two-tone /> &nbsp; 任务管理
           </router-link>
         </a-menu-item>
       </a-sub-menu>

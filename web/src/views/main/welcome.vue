@@ -1,5 +1,5 @@
 <template>
-  <h1>欢迎使用火车票售票系统</h1>
+  <img src="./image/welcome.png"/>
 </template>
 <script>
 import { defineComponent } from 'vue';
@@ -13,4 +13,3 @@ export default defineComponent({
 </script>
 <style>
 </style>
-

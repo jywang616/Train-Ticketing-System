@@ -1,5 +1,10 @@
 <template>
-  <h1>欢迎使用火车票售票系统</h1>
+<!--
+  <img src="./image/admin_wel.png"/>
+-->
+
+  <div id="home"></div>
+
 </template>
 <script>
 import { defineComponent } from 'vue';
@@ -12,5 +17,14 @@ export default defineComponent({
 });
 </script>
 <style>
+
+#home {
+  width: 100%;
+  min-height: 100vh;
+  background: url("./image/admin_welcome.png") center center no-repeat;
+  background-size: 100% 100%;
+
+}
+
 </style>
 
