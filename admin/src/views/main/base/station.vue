@@ -68,22 +68,22 @@
             let loading = ref(false);
             const columns = [
                 {
-                    title: '站名',
+                    title: 'Station',
                     dataIndex: 'name',
                     key: 'name',
                 },
                 {
-                    title: '站名拼音',
+                    title: 'Pinyin',
                     dataIndex: 'namePinyin',
                     key: 'namePinyin',
                 },
                 {
-                    title: '拼音首字母',
+                    title: 'Capital Word',
                     dataIndex: 'namePy',
                     key: 'namePy',
                 },
                 {
-                    title: '操作',
+                    title: 'Operation',
                     dataIndex: 'operation'
                 }
             ];
@@ -113,7 +113,7 @@
                 axios.delete("/business/admin/station/delete/" + record.id).then((response) => {
                     const data = response.data;
                     if (data.success) {
-                        notification.success({description: "删除成功！"});
+                        notification.success({description: "Delete Successfully！"});
                         handleQuery({
                             page: pagination.value.current,
                             size: pagination.value.pageSize,
@@ -128,7 +128,7 @@
                 axios.post("/business/admin/station/save", station.value).then((response) => {
                     let data = response.data;
                     if (data.success) {
-                        notification.success({description: "保存成功！"});
+                        notification.success({description: "Save Successfully!"});
                         visible.value = false;
                         handleQuery({
                             page: pagination.value.current,

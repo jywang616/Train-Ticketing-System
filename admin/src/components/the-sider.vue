@@ -3,7 +3,7 @@
     <a-menu
         v-model:selectedKeys="selectedKeys"
         mode="inline"
-        :openKeys="['batch', 'base']"
+        :openKeys="['batch', 'base', 'business']"
         :style="{ height: '100%', borderRight: 0 }"
     >
       <a-menu-item key="/welcome">
@@ -21,16 +21,16 @@
             <MenuUnfoldOutlined /> &nbsp; Task Management
           </router-link>
         </a-menu-item>
-      <a-sub-menu key="batch">
+      <a-sub-menu key="business">
         <template #title>
           <span>
             <UnorderedListOutlined />
-            Batch Management
+            Business Management
           </span>
         </template>
-        <a-menu-item key="/batch/job">
-          <router-link to="/batch/job">
-            <MenuUnfoldOutlined /> &nbsp; Task Management
+        <a-menu-item key="/business/daily-train">
+          <router-link to="/business/daily-train">
+            <user-outlined /> &nbsp; 每日车次
           </router-link>
         </a-menu-item>
       </a-sub-menu>
@@ -64,6 +64,19 @@
         <a-menu-item key="/base/train-seat">
           <router-link to="/base/train-seat">
             <user-outlined /> &nbsp; 座位管理
+          </router-link>
+        </a-menu-item>
+      </a-sub-menu>
+      <a-sub-menu key="batch">
+        <template #title>
+          <span>
+            <UnorderedListOutlined />
+            跑批管理
+          </span>
+        </template>
+        <a-menu-item key="/batch/job">
+          <router-link to="/batch/job">
+            <MenuUnfoldOutlined /> &nbsp; 任务管理
           </router-link>
         </a-menu-item>
       </a-sub-menu>
