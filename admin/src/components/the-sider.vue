@@ -2,30 +2,25 @@
   <a-layout-sider width="200" style="background: #fff">
     <a-menu
         v-model:selectedKeys="selectedKeys"
-        mode="inline"
         :openKeys="['batch', 'base', 'business']"
+        mode="inline"
         :style="{ height: '100%', borderRight: 0 }"
     >
       <a-menu-item key="/welcome">
         <router-link to="/welcome">
-          <coffee-outlined /> &nbsp; Welcome
+          <coffee-outlined /> &nbsp; 欢迎
         </router-link>
       </a-menu-item>
       <a-menu-item key="/about">
         <router-link to="/about">
-          <user-outlined /> &nbsp; About
+          <user-outlined /> &nbsp; 关于
         </router-link>
       </a-menu-item>
-        <a-menu-item key="/batch/job">
-          <router-link to="/batch/job">
-            <MenuUnfoldOutlined /> &nbsp; Task Management
-          </router-link>
-        </a-menu-item>
       <a-sub-menu key="business">
         <template #title>
           <span>
             <UnorderedListOutlined />
-            Business Management
+            业务管理
           </span>
         </template>
         <a-menu-item key="/business/daily-train">
@@ -53,12 +48,12 @@
         <template #title>
           <span>
             <UnorderedListOutlined />
-            Basic Data
+            基础数据
           </span>
         </template>
         <a-menu-item key="/base/station">
           <router-link to="/base/station">
-            <user-outlined /> &nbsp; 城市管理
+            <user-outlined /> &nbsp; 车站管理
           </router-link>
         </a-menu-item>
         <a-menu-item key="/base/train">
@@ -73,12 +68,12 @@
         </a-menu-item>
         <a-menu-item key="/base/train-carriage">
           <router-link to="/base/train-carriage">
-            <user-outlined /> &nbsp; 车厢管理
+            <user-outlined /> &nbsp; 火车车厢
           </router-link>
         </a-menu-item>
         <a-menu-item key="/base/train-seat">
           <router-link to="/base/train-seat">
-            <user-outlined /> &nbsp; 座位管理
+            <user-outlined /> &nbsp; 火车座位
           </router-link>
         </a-menu-item>
       </a-sub-menu>
@@ -124,3 +119,4 @@ export default defineComponent({
 <style scoped>
 
 </style>
+

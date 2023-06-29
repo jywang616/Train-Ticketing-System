@@ -24,12 +24,15 @@ import java.util.List;
 @Service
 public class TrainService {
 
+
     @Resource
     private TrainMapper trainMapper;
-    public void save(TrainSaveReq req){
-        DateTime now=DateTime.now();
-        Train train=BeanUtil.copyProperties(req,Train.class);
-        if(ObjectUtil.isNull(train.getId())) {
+
+    public void save(TrainSaveReq req) {
+        DateTime now = DateTime.now();
+        Train train = BeanUtil.copyProperties(req, Train.class);
+        if (ObjectUtil.isNull(train.getId())) {
+
             // 保存之前，先校验唯一键是否存在
             Train trainDB = selectByUnique(req.getCode());
             if (ObjectUtil.isNotEmpty(trainDB)) {
@@ -40,12 +43,12 @@ public class TrainService {
             train.setCreateTime(now);
             train.setUpdateTime(now);
             trainMapper.insert(train);
-        }
-        else{
-            train.setCreateTime(now);
+        } else {
+            train.setUpdateTime(now);
             trainMapper.updateByPrimaryKey(train);
         }
     }
+
     private Train selectByUnique(String code) {
         TrainExample trainExample = new TrainExample();
         trainExample.createCriteria()
@@ -57,30 +60,38 @@ public class TrainService {
             return null;
         }
     }
-    public PageResp<TrainQueryResp> queryList(TrainQueryReq req){
-        TrainExample trainExample=new TrainExample();
+
+    public PageResp<TrainQueryResp> queryList(TrainQueryReq req) {
+        TrainExample trainExample = new TrainExample();
         trainExample.setOrderByClause("code asc");
-        TrainExample.Criteria criteria=trainExample.createCriteria();
+        TrainExample.Criteria criteria = trainExample.createCriteria();
 
         PageHelper.startPage(req.getPage(), req.getSize());
-        List<Train> trainList=trainMapper.selectByExample((trainExample));
+        List<Train> trainList = trainMapper.selectByExample(trainExample);
 
-        PageInfo<Train> pageInfo= new PageInfo<>(trainList);
+        PageInfo<Train> pageInfo = new PageInfo<>(trainList);
 
-        List<TrainQueryResp> list= BeanUtil.copyToList(trainList,TrainQueryResp.class);
-        PageResp<TrainQueryResp> pageResp=new PageResp<>();
+        List<TrainQueryResp> list = BeanUtil.copyToList(trainList, TrainQueryResp.class);
+
+        PageResp<TrainQueryResp> pageResp = new PageResp<>();
         pageResp.setTotal(pageInfo.getTotal());
         pageResp.setList(list);
         return pageResp;
     }
 
-    public List<TrainQueryResp> queryAll() {
-        TrainExample trainExample = new TrainExample();
-        trainExample.setOrderByClause("code asc");
-        List<Train> trainList = trainMapper.selectByExample(trainExample);
-        return BeanUtil.copyToList(trainList, TrainQueryResp.class);
-    }
-    public void delete(Long id){
+    public void delete(Long id) {
         trainMapper.deleteByPrimaryKey(id);
     }
+
+    public List<TrainQueryResp> queryAll() {
+        List<Train> trainList = selectAll();
+        return BeanUtil.copyToList(trainList, TrainQueryResp.class);
+    }
+
+    public List<Train> selectAll() {
+        TrainExample trainExample = new TrainExample();
+        trainExample.setOrderByClause("code asc");
+        return trainMapper.selectByExample(trainExample);
+    }
 }
+
