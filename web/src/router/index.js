@@ -17,10 +17,22 @@ const routes = [{
     },{
       path:'passenger',
       component:()=>import('../views/main/passenger.vue')
-    },
+    }, {
+        path:'nonstopticket',
+        component:()=>import('../views/main/nonstopticket.vue')
+      },{
+        path:'transferticket',
+        component:()=>import('../views/main/transferticket.vue')
+      },{
+        path:'ticketinfo',
+        component:()=>import('../views/main/ticketinfo.vue')
+      },{
+        path:'result',
+        component:()=>import('../views/main/result.vue')
+      },
       {
-        path:'exchange',
-        component:()=>import('../views/main/exchange.vue')
+        path:'confirm-order',
+        component:()=>import('../views/main/confirm-order.vue')
       }]
   },
   {

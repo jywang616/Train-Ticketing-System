@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyw.ticketsystem.ticket.mapper.CityStationMapper">
+  <resultMap id="BaseResultMap" type="com.jyw.ticketsystem.ticket.domain.CityStation">
+    <id column="station_name" jdbcType="VARCHAR" property="station_name" />
+    <result column="city_name" jdbcType="VARCHAR" property="city_name" />
+  </resultMap>
+  <select id="getstation"  resultType= "java.lang.String">
+    select station_name from city_station where city_station.city_name = #{city}
+  </select>
+  <select id="getmapper" resultMap="BaseResultMap">
+    select * from city_station
+  </select>
+  <select id="getCity" resultType="java.lang.String">
+    select distinct city_name from city_station order by city_station.city_name;
+  </select>
+  <select id="getCityNum" resultType="java.lang.Integer">
+    select count(distinct city_name) from city_station;
+  </select>
+  <select id="matchCity" resultType="java.lang.String">
+    select city_name from city_station where city_station.station_name=#{station}
+  </select>
+</mapper>

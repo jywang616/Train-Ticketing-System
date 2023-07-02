@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyw.ticketsystem.ticket.mapper.CarriageMapper">
+  <select id="getSeat"   resultType= "java.lang.Integer">
+    select sum(seat_count) as sum_seat from daily_train_carriage where train_code=#{code} and seat_type=#{seat};
+  </select>
+<!--  后面会换掉这行-->
+</mapper>

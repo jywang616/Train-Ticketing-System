@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyw.ticketsystem.ticket.mapper.GraphMapper">
+  <select id="getGraph"  resultType="com.jyw.ticketsystem.ticket.domain.Graph">
+    select start_city,end_city,duration from graph where DATE_FORMAT(start_date,'%Y%m%d')=DATE_FORMAT(#{start_date},'%Y%m%d')
+  </select>
+  <insert id="saveGraphin" parameterType="com.jyw.ticketsystem.ticket.domain.Graph">
+    INSERT into graph(start_city, end_city, duration, start_date) VALUES(#{start_city},#{end_city},#{duration},DATE_FORMAT(#{start_date},'%Y%m%d'))
+  </insert>
+</mapper>

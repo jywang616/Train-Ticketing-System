@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyw.ticketsystem.ticket.mapper.StationMapper">
+  <resultMap id="BaseResultMap" type="com.jyw.ticketsystem.ticket.domain.TrainInfo">
+    <id column="train_code" property="traincode" />
+    <result column="start_name" property="start_station" />
+    <result column="end_name" property="end_station" />
+    <result column="start_time" property="start_time" />
+    <result column="end_time" property="end_time" />
+    <result column="start_NO" property="start_NO" />
+    <result column="end_NO" property="end_NO" />
+  </resultMap>
+  <resultMap id="Station" type="com.jyw.ticketsystem.ticket.domain.Station">
+    <id column="train_code" property="traincode" />
+    <result column="index" property="station_NO" />
+    <result column="name" property="name" />
+    <result column="in_time" property="start_time" />
+    <result column="out_time" property="out_time" />
+    <result column="stop_time" property="duration" />
+  </resultMap>
+  <select id="findtraininfo"  resultMap= "BaseResultMap">
+    SELECT DISTINCT t1.train_code as train_code,t1.name as start_name,t2.name as end_name,t1.in_time as start_time,t2.in_time as end_time,t1.index as start_NO,t2.index as end_NO FROM daily_train_station AS t1 INNER JOIN  daily_train_station  AS t2 ON t1.train_code = t2.train_code where t1.name=#{name1} AND t2.name=#{name2} AND  t1.index &lt; t2.index AND DATE_FORMAT(t1.date,'%Y%m%d')&gt;=DATE_FORMAT(#{sd},'%Y%m%d') and DATE_FORMAT(t2.date,'%Y%m%d')&lt;=DATE_FORMAT(#{en},'%Y%m%d');
+  </select>
+  <select id="findnexttrain" resultMap="BaseResultMap">
+    SELECT DISTINCT t1.train_code as train_code,t1.name as start_name,t2.name as end_name,min(t1.in_time) as start_time,t2.in_time as end_time,t1.index as start_NO,t2.index as end_NO FROM daily_train_station AS t1 INNER JOIN  daily_train_station AS t2 ON t1.train_code = t2.train_code where t1.name=#{name1} AND t2.name=#{name2} AND  t1.index &lt; t2.index AND DATE_FORMAT(t1.in_time,'%H:%i:%S') &gt;=#{sd} and DATE_FORMAT(t2.date,'%Y%m%d')&lt;=DATE_FORMAT(#{en},'%Y%m%d');
+  </select>
+  <select id="getAllstation" resultType="com.jyw.ticketsystem.ticket.domain.Station">
+    select * from daily_train_station where daily_train_station.train_code=#{traincode}
+  </select>
+  <select id="getStationName" resultType="java.lang.String">
+    select name from daily_train_station where daily_train_station.train_code=#{traincode} and daily_train_station.index=#{no}
+  </select>
+  <select id="getTrainStationInfo" resultMap="Station">
+    select train_code, `index`, name, in_time, out_time
+    from daily_train_station
+    where daily_train_station.train_code = #{traincode}
+    order by daily_train_station.index
+  </select>
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyw.ticketsystem.ticket.mapper.TrainMapper">
+  <resultMap id="BaseResultMap" type="com.jyw.ticketsystem.ticket.domain.Train">
+    <id column="code" property="traincode" />
+    <result column="start" property="start" />
+    <result column="start_pinyin" property="start_pinyin" />
+    <result column="end" property="end" />
+    <result column="end_pinyin" property="end_pinyin" />
+    <result column="start_time" property="start_time" />
+    <result column="end_time" property="end_time" />
+  </resultMap>
+  <select id="getdailytrain"  resultMap= "BaseResultMap">
+    select * from daily_train where DATE_FORMAT(start_time,'%Y%m%d')=DATE_FORMAT(#{date},'%Y%m%d')
+#     train也是数据库名字，看是否有错误
+  </select>
+</mapper>

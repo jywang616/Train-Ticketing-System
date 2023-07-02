@@ -10,14 +10,32 @@
           <coffee-outlined />&nbsp;欢迎
         </router-link>
       </a-menu-item>
+      <a-sub-menu key="sub1">
+        <template #title>
+            <span>
+              <user-outlined />
+              购票中心
+            </span>
+        </template>
+        <a-menu-item key="/nonstopticket">
+          <router-link to="/nonstopticket">
+            <smile-outlined />&nbsp;直达购票
+          </router-link>
+        </a-menu-item>
+        <a-menu-item key="/transferticket">
+          <router-link to="/transferticket">
+            <smile-outlined />&nbsp;中转换乘
+          </router-link>
+        </a-menu-item>
+      </a-sub-menu>
       <a-menu-item key="/passenger">
         <router-link to="/passenger">
           <smile-outlined />&nbsp;乘车人管理
         </router-link>
       </a-menu-item>
-      <a-menu-item key="/exchange">
-        <router-link to="/exchange">
-          <smile-outlined />&nbsp;中转购票
+      <a-menu-item key="/confirm-order">
+        <router-link to="/confirm-order">
+          <smile-outlined />&nbsp;订单查询
         </router-link>
       </a-menu-item>
     </a-menu>

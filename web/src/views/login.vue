@@ -95,7 +95,7 @@ export default defineComponent({
 
 <style>
 #background{
-  background:url("../assets/bg.jpg");
+  background:url("../assets/welcome.png");
   width:100%;
   height:100%;
   position:fixed;
